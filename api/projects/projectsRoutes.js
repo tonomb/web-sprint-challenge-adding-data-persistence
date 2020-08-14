@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router()
 
+const Projects = require('./projectsModel')
+
 //==== /api/projects ===
 
 router.get('/', (req, res) => {
