@@ -26,8 +26,9 @@ router.post('/', (req, res) => {
       res.status(201).json({resource})
     })
     .catch( err => {
-      console.log(err);
-      res.status(500).json(err)
+      if(err.errno === 19){
+        res.json({error: 'Name must be unique'})
+      }
     })
 })
 

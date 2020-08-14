@@ -12,7 +12,7 @@ function getResources(){
 }
 
 function getResourceById(id){
-  return db('resources').where({id})
+  return db('resources').where({id}).first()
 }
 
 function addResource(resource){
@@ -20,7 +20,6 @@ function addResource(resource){
     .then( ids => {
       return getResourceById(ids)
     })
-    .catch( err => {
-      console.log(err);
-    })
+    // if you add the catch here it goes through the then on the route.
+    
 }
