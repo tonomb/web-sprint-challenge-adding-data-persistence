@@ -23,6 +23,9 @@ exports.up = function (knex) {
       table.increments("id");
       table.string("name").notNullable().unique();
       table.string("description");
+    })
+    .createTable("project_resources", (table) => {
+      table.increments("id");
       table
         .integer("project_id")
         .unsigned()
@@ -30,11 +33,19 @@ exports.up = function (knex) {
         .references("projects.id")
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
+      table
+        .integer("resource_id")
+        .unsigned()
+        .notNullable()
+        .references("resource.id")
+        .onDelete("RESTRICT")
+        .onUpdate("CASCADE");
     });
 };
 
 exports.down = function (knex) {
-  return knex
+  return knex.schema
+    .dropTableIfExists("project_resources")
     .dropTableIfExists("resources")
     .dropTableIfExists("tasks")
     .dropTableIfExists("projects");
