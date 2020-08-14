@@ -24,7 +24,7 @@ exports.up = function (knex) {
       table.string("name").notNullable().unique();
       table.string("description");
     })
-    .createTable("project_resources", (table) => {
+    .createTable('project_resources', (table) => {
       table.increments("id");
       table
         .integer("project_id")
@@ -37,7 +37,7 @@ exports.up = function (knex) {
         .integer("resource_id")
         .unsigned()
         .notNullable()
-        .references("resource.id")
+        .references("resources.id")
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
     });

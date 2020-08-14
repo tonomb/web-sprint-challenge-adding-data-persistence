@@ -1,7 +1,8 @@
 
+
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('project_resources').del()
+  return knex('project_resources').truncate()
     .then(function () {
       // Inserts seed entries
       return knex('project_resources').insert([
@@ -19,3 +20,4 @@ exports.seed = function(knex) {
 };
 
 //BUG: seeding this file doesn´t work. 
+
