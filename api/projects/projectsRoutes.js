@@ -20,6 +20,13 @@ router.get('/:id', (req, res) =>{
     })
 })
 
+router.get('/:id/tasks', (req, res) =>{
+  Projects.getProjectTasks(req.params.id)
+    .then( tasks =>{
+      res.status(200).json({tasks})
+    })
+})
+
 router.post('/', (req, res) => {
   Projects.addProject(req.body)
     .then(project => {
